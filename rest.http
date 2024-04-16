@@ -1,0 +1,13 @@
+POST http://localhost:9000/api/v1/orders
+Content-Type: application/json
+
+{
+  "orderNumber": "1",
+  "skuCode": "iPhone14",
+  "price": "1000",
+  "quantity": "100"
+}
+
+
+###
+GET http://localhost:9000/api/v1/inventories/list

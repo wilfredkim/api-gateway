@@ -1,0 +1,15 @@
+
+
+spring:
+  application:
+    name: api-gateway
+
+server:
+  port: 9000
+
+
+routes:
+  url:
+    product-service: http://localhost:1662
+    order-service: http://localhost:1663
+    inventory-service: http://localhost:1664
