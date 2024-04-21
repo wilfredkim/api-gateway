@@ -24,14 +24,14 @@ public class Routes {
     public RouterFunction<ServerResponse> responseProductService() {
 
         return GatewayRouterFunctions.route("product-service")
-                .route(RequestPredicates.path("/api/v1/product"), HandlerFunctions.http(orderServiceEndpoint))
+                .route(RequestPredicates.path("/api/v1/product"), HandlerFunctions.http(productServiceEndpoint))
                 .build();
     }
 
     @Bean
     public RouterFunction<ServerResponse> responseOrderService() {
         return GatewayRouterFunctions.route("order-service")
-                .route(RequestPredicates.path("/api/v1/orders"), HandlerFunctions.http(productServiceEndpoint))
+                .route(RequestPredicates.path("/api/v1/orders"), HandlerFunctions.http(orderServiceEndpoint))
                 .build();
     }
 
