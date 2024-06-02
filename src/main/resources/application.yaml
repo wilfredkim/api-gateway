@@ -34,3 +34,50 @@ routes:
     product-service: http://localhost:1662
     order-service: http://localhost:1663
     inventory-service: http://localhost:1664
+
+##actuator endpoints!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+  health:
+    circuitbreakers:
+      enabled: true
+
+
+##resilience4j endpoints!
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        register-health-indicator: true
+        sliding-window-type: count_based
+        sliding-window-size: 10
+        failure-rate-threshold: 50
+        wait-duration-in-open-state:
+          seconds: 5
+        permitted-number-of-calls-in-half-open-state: 3
+        automatic-transition-from-open-to-half-open-enabled: true
+        minimum-number-of-calls: 5
+
+  ##resilience4j timeout properties
+  timelimiter:
+    configs:
+      default:
+        timeout-duration:
+          seconds: 3
+  ##resilience4j retry properties
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration:
+          seconds: 2
+
+
+
