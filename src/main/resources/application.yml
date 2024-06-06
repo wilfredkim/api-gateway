@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: optional:configserver:${EUREKA_SERVER_ADDRESS:http://localhost:1666}
